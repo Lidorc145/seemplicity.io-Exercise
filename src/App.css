@@ -130,3 +130,34 @@ svg.MuiDataGrid-iconSeparator {
 div.MuiDataGrid-columnHeader, div.MuiDataGrid-cell {
     padding-left: 20px !important;
 }
+
+.findingModal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 400px;
+    max-width: 750px;
+    background-color: #FFFFFF;
+    border: 2px solid #E0E1E8;
+    border-radius: 8px;
+    padding: 4px;
+    padding: 10px 20px 10px 20px;
+}
+
+.modalTitle {
+    height: 29px;
+    font-family: 'Heebo';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 29px;
+    align-items: flex-end;
+    color: #26026C;
+}
+
+.separator {
+    background-color: #E0E1E8;
+    height: 2px;
+    margin: 10px 0px 10px 0px;
+}

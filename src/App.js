@@ -7,9 +7,6 @@ function App() {
         <div className="App">
             <NavBar/>
             <div className="body">
-                <h1 className="text-3xl font-bold text-left">
-                    Findings
-                </h1>
                 <FindingTable/>
 
             </div>
