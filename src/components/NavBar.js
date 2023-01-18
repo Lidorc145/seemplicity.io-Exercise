@@ -1,11 +1,8 @@
 import React, {useEffect} from 'react';
 import AppBar from "@mui/material/AppBar";
-import {
-    Box, IconButton,
-    Toolbar,
-} from "@mui/material";
+import {IconButton, Toolbar,} from "@mui/material";
 import {DefaultUserIcon, SeemplicityLogo, SettingsIcon} from "./SvgData";
-import {ThemeProvider, createTheme} from '@mui/material/styles';
+import {createTheme, ThemeProvider} from '@mui/material/styles';
 
 const darkTheme = createTheme({
     palette: {
@@ -17,21 +14,22 @@ const darkTheme = createTheme({
 
 export function NavBar() {
     const navItems = ['Dashboard', 'Findings', 'Remediation', 'Rules'];
-    useEffect(()=>{
+    useEffect(() => {
         const items = document.querySelectorAll('.nav-item');
         items.forEach(function (item, index) {
             item.classList.contains('is-active') && handleIndicator(item);
         });
     });
 
-    return(
+    return (
         <ThemeProvider theme={darkTheme}>
             <AppBar>
-                <Toolbar className='toolbar' >
+                <Toolbar className='toolbar'>
                     <SeemplicityLogo/>
                     <nav className="nav">
                         {navItems.map((item) => (
-                            <a href="#" key={item} className={"nav-item"+(item===navItems[1]?' is-active': '')} onChange={(e)=>console.log("dsdsdds")} active-color="#607AFF" onClick={e=>{
+                            <a href="#" key={item} className={"nav-item" + (item === navItems[1] ? ' is-active' : '')}
+                               onChange={(e) => console.log("dsdsdds")} active-color="#607AFF" onClick={e => {
                                 e.preventDefault();
                                 handleIndicator(e.target);
                             }}>{item}</a>
@@ -39,18 +37,19 @@ export function NavBar() {
                         <span className="nav-indicator"></span>
 
                     </nav>
-                    <div className="grow" />
+                    <div className="grow"/>
                     <IconButton style={{marginRight: '20px'}} edge="start" color="inherit">
                         <SettingsIcon/>
                     </IconButton>
-<div>
-                    <IconButton edge="start" color="inherit">
-                        <DefaultUserIcon/>
-                    </IconButton>
-    <a href="#" className="hidden-mobile" onClick={e=>e.preventDefault()}>John@seemplicity.io</a></div>
-                       </Toolbar>
+                    <div>
+                        <IconButton edge="start" color="inherit">
+                            <DefaultUserIcon/>
+                        </IconButton>
+                        <a href="#" className="hidden-mobile" onClick={e => e.preventDefault()}>John@seemplicity.io</a>
+                    </div>
+                </Toolbar>
             </AppBar>
-            <Toolbar />
+            <Toolbar/>
         </ThemeProvider>
 
     );
