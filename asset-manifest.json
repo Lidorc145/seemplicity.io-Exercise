@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/seemplicity.io-Exercise/static/css/main.c62327ad.css",
+    "main.js": "/seemplicity.io-Exercise/static/js/main.d1f2f85e.js",
+    "static/js/787.8ab3edf2.chunk.js": "/seemplicity.io-Exercise/static/js/787.8ab3edf2.chunk.js",
+    "index.html": "/seemplicity.io-Exercise/index.html",
+    "main.c62327ad.css.map": "/seemplicity.io-Exercise/static/css/main.c62327ad.css.map",
+    "main.d1f2f85e.js.map": "/seemplicity.io-Exercise/static/js/main.d1f2f85e.js.map",
+    "787.8ab3edf2.chunk.js.map": "/seemplicity.io-Exercise/static/js/787.8ab3edf2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c62327ad.css",
+    "static/js/main.d1f2f85e.js"
+  ]
+}
