@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/seemplicity.io-Exercise/static/css/main.9b06695f.css",
-    "main.js": "/seemplicity.io-Exercise/static/js/main.217fdb13.js",
+    "main.css": "/seemplicity.io-Exercise/static/css/main.33dca815.css",
+    "main.js": "/seemplicity.io-Exercise/static/js/main.1122b85a.js",
     "static/js/787.8ab3edf2.chunk.js": "/seemplicity.io-Exercise/static/js/787.8ab3edf2.chunk.js",
     "index.html": "/seemplicity.io-Exercise/index.html",
-    "main.9b06695f.css.map": "/seemplicity.io-Exercise/static/css/main.9b06695f.css.map",
-    "main.217fdb13.js.map": "/seemplicity.io-Exercise/static/js/main.217fdb13.js.map",
+    "main.33dca815.css.map": "/seemplicity.io-Exercise/static/css/main.33dca815.css.map",
+    "main.1122b85a.js.map": "/seemplicity.io-Exercise/static/js/main.1122b85a.js.map",
     "787.8ab3edf2.chunk.js.map": "/seemplicity.io-Exercise/static/js/787.8ab3edf2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9b06695f.css",
-    "static/js/main.217fdb13.js"
+    "static/css/main.33dca815.css",
+    "static/js/main.1122b85a.js"
   ]
 }
