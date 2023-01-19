@@ -1,5 +1,8 @@
+
 # Seemplicity.io exercise 
 ### Links:
+
+#### [Exercise.pdf](https://github.com/Lidorc145/seemplicity.io-Exercise/files/10457776/Jira.Ticket.Exercise-2.pdf)
 #### [Figma](https://www.figma.com/file/VYFO8Qr8FqLBmkguE2SHrN)
 
 
