@@ -19,3 +19,23 @@ export function GetFindingsData() {
 
     return data;
 }
+
+export const projectOptions = {
+    Jira: [{value: 'seemplicity', label: 'seemplicity'},
+        {value: 'project1', label: 'project 1'},
+        {value: 'project2', label: 'project 2'},
+        {value: 'project3', label: 'project 3'}],
+
+    ServiceNow: [{value: 'project4', label: 'project 4'},
+        {value: 'project5', label: 'project 5'}],
+    Monday: [{value: 'project6', label: 'project 6'},
+        {value: 'project7', label: 'project 7'}]
+};
+
+export const issueTypeOptions = [
+    {value: 'task', label: 'Task'},
+    {value: 'bug', label: 'Bug'},
+    {value: 'story', label: 'Story'}
+];
+
+export const ticketKinds = ['Jira', 'ServiceNow', 'Monday'];

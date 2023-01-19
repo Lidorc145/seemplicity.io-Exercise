@@ -7,68 +7,50 @@ import {JiraLogo, MondayLogo, ServiceNowLogo} from "./SvgData";
 import {Controller, useForm} from "react-hook-form";
 import {yupResolver} from '@hookform/resolvers/yup';
 import * as yup from "yup";
+import {issueTypeOptions, projectOptions, ticketKinds} from "../MockData";
+import {useEffect} from "react";
 
-const projectOptions = [
-    {value: 'seemplicity', label: 'seemplicity'},
-    {value: 'project1', label: 'project 1'},
-    {value: 'project2', label: 'project 2'},
-    {value: 'project3', label: 'project 3'},
-
-];
-const issueTypeOptions = [
-    {value: 'task', label: 'Task'},
-    {value: 'bug', label: 'Bug'}
-];
-
-const ticketKinds = ['Monday', 'ServiceNow', 'Jira'];
-const ticketLogos = [<MondayLogo/>, <ServiceNowLogo/>, <JiraLogo/>];
+const ticketLogos = [<JiraLogo/>, <ServiceNowLogo/>, <MondayLogo/>];
 
 export default function FindingModal(props) {
     const {open, setOpen, row} = props;
-
     const schema = yup.object().shape({
         service: yup.string().required(),
         project: yup.object().required(),
         issueType: yup.object().required(),
-        title: yup.string().when("issueType", (issueType) => {
-            if (issueType?.value === 'task') {
-                return yup.string().required("Must enter title");
-            }
-            if (issueType?.value === 'bug') {
-                return yup.string();
-            }
-        }),
-        description: yup.string().when("issueType", (issueType) => {
-            if (issueType?.value === 'task') {
-                return yup.string().required("Must enter description");
-            }
-            if (issueType?.value === 'bug') {
-                return yup.string();
-            }
-        }),
+        title: yup.string().required("Must enter title"),
+        description: yup.string().required("Must enter description")
     });
 
     const {register, control, handleSubmit, watch, reset, formState: {errors}} = useForm({
         resolver: yupResolver(schema)
     });
 
-
     const onSubmit = data => {
         if (!shouldDisabled()) {
-            row['ticket'] = {id: Math.floor(Math.random() * 9999), name: watch("service")};
+            row['ticket'] = {
+                id: Math.floor(Math.random() * 9999),
+                name: watch("service"),
+                title: watch('title'),
+                description: watch('description'),
+                issueType: watch('issueType')
+            };
             handleClose();
         }
     };
+    useEffect(() => {
+        reset({service: 'Jira'});
+    }, []);
 
     const handleClose = () => {
         setOpen(false);
-        reset();
+        reset({service: 'Jira'});
     };
 
     const shouldDisabled = () => {
         return Object.getOwnPropertyNames(errors).length !== 0;
     };
-    
+
     return (<Modal
         open={open}
         onClose={handleClose}
@@ -90,13 +72,20 @@ export default function FindingModal(props) {
                             <label key={idx}>
                                 <div className='flex mr-8'>
                                     <div className='grow mr-2'>
-                                        <input type="radio"  {...register('service')}
-                                               defaultChecked={val === 'Jira'}
+                                        <input type="radio" {...register('service')} onChange={(e) => {
+                                            register('service').onChange(e);
+                                            reset({
+                                                service: watch('service'),
+                                                project: '',
+                                                issueType: watch('issueType')
+                                            });
+                                        }}
+                                               defaultChecked={val === watch('service')}
                                                value={val}/>
                                     </div>
                                     <div className='flex-none'>{ticketLogos[idx]}</div>
                                 </div>
-                            </label>)).reverse()}
+                            </label>))}
                     </div>
                     {errors.service && <p className='alert'>{errors.service.message}</p>}
                     <div>
@@ -114,7 +103,7 @@ export default function FindingModal(props) {
                                             placeholder="Select Project"
                                             name={name}
                                             value={value}
-                                            options={projectOptions}
+                                            options={projectOptions[(watch('service') || 'Jira')]}
                                             onBlur={onBlur}
                                             onChange={onChange}
                                             inputRef={ref}/>
@@ -138,7 +127,7 @@ export default function FindingModal(props) {
                                 {errors.issueType && <p className='alert'>{errors.issueType.message}</p>}
                             </div>
                         </div>
-                        {watch("issueType")?.value === 'task' &&
+                        {watch("issueType")?.value &&
                             <div className='grid-container'>
                                 <div className='text-1xl font-bold text-left grid-full'>Title</div>
                                 <div className='grid-full'>
