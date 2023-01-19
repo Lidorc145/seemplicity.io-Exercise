@@ -108,7 +108,7 @@
 }
 
 svg.MuiDataGrid-iconSeparator {
- 
+
 }
 
 .nav-item:not(.is-active):hover:before {
@@ -262,4 +262,14 @@ div.MuiDataGrid-columnHeader, div.MuiDataGrid-cell {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none;
     overflow-y: hidden; /* Hide vertical scrollbar */
+}
+
+p.alert {
+    color: #bf1650;
+    font-size: 10px;
+}
+
+p.alert::before {
+    display: inline;
+    content: "⚠ ";
 }

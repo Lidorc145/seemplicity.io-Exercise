@@ -198,13 +198,13 @@ export function JiraLogoSmall() {
             <defs>
                 <linearGradient id="paint0_linear_101_241" x1="7.81632" y1="3.27786" x2="4.55818" y2="6.536"
                                 gradientUnits="userSpaceOnUse">
-                    <stop offset="0.18" stop-color="#0052CC"/>
-                    <stop offset="1" stop-color="#2684FF"/>
+                    <stop offset="0.18" stopColor="#0052CC"/>
+                    <stop offset="1" stopColor="#2684FF"/>
                 </linearGradient>
                 <linearGradient id="paint1_linear_101_241" x1="206.726" y1="484.023" x2="319.256" y2="411.091"
                                 gradientUnits="userSpaceOnUse">
-                    <stop offset="0.18" stop-color="#0052CC"/>
-                    <stop offset="1" stop-color="#2684FF"/>
+                    <stop offset="0.18" stopColor="#0052CC"/>
+                    <stop offset="1" stopColor="#2684FF"/>
                 </linearGradient>
             </defs>
         </svg>
@@ -213,7 +213,7 @@ export function JiraLogoSmall() {
 
 export function ServiceNowLogoSmall() {
     return (<svg width="13" height="12" viewBox="0 0 13 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd"
+            <path fillRule="evenodd" clipRule="evenodd"
                   d="M6.52716 0.803223C3.04757 0.803223 0.313599 3.53614 0.313599 7.01439C0.313599 8.83633 1.05922 10.4926 2.21909 11.6521C2.63333 12.0661 3.37895 12.0661 3.87604 11.7349C4.53882 11.1552 5.53299 10.8239 6.52716 10.8239C7.60418 10.8239 8.43265 11.1552 9.17828 11.7349C9.67537 12.149 10.3381 12.0661 10.8352 11.5692C11.9951 10.4098 12.7407 8.83633 12.7407 7.01439C12.6579 3.61895 9.92391 0.803223 6.52716 0.803223ZM6.44431 10.2442C4.53882 10.2442 3.29611 8.83633 3.29611 7.09721C3.29611 5.35808 4.53882 3.95021 6.44431 3.95021C8.3498 3.95021 9.59252 5.35808 9.59252 7.09721C9.59252 8.83633 8.3498 10.2442 6.44431 10.2442Z"
                   fill="#81B5A1"/>
         </svg>
