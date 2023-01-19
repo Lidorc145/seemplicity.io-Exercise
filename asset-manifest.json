@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/seemplicity.io-Exercise/static/css/main.fa4ecf54.css",
-    "main.js": "/seemplicity.io-Exercise/static/js/main.8112c371.js",
+    "main.js": "/seemplicity.io-Exercise/static/js/main.6eae74e2.js",
     "static/js/787.8ab3edf2.chunk.js": "/seemplicity.io-Exercise/static/js/787.8ab3edf2.chunk.js",
     "index.html": "/seemplicity.io-Exercise/index.html",
     "main.fa4ecf54.css.map": "/seemplicity.io-Exercise/static/css/main.fa4ecf54.css.map",
-    "main.8112c371.js.map": "/seemplicity.io-Exercise/static/js/main.8112c371.js.map",
+    "main.6eae74e2.js.map": "/seemplicity.io-Exercise/static/js/main.6eae74e2.js.map",
     "787.8ab3edf2.chunk.js.map": "/seemplicity.io-Exercise/static/js/787.8ab3edf2.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fa4ecf54.css",
-    "static/js/main.8112c371.js"
+    "static/js/main.6eae74e2.js"
   ]
 }
