@@ -136,10 +136,8 @@ div.MuiDataGrid-columnHeader, div.MuiDataGrid-cell {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    min-width: 440px;
-    max-width: 660px;
-    min-height: 411px;
-    max-height: 633px;
+    min-width: 50%;
+    min-height: 50%;
     background-color: #FFFFFF;
     border: 2px solid #E0E1E8;
     border-radius: 8px;
@@ -152,7 +150,7 @@ div.MuiDataGrid-columnHeader, div.MuiDataGrid-cell {
     font-family: 'Heebo';
     font-style: normal;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 20vm;
     line-height: 29px;
     align-items: flex-end;
     color: #26026C;
@@ -242,4 +240,11 @@ div.MuiDataGrid-columnHeader, div.MuiDataGrid-cell {
 
 .buttons:disabled {
     opacity: 0.5;
+}
+
+.buttonGroup {
+    position: fixed;
+    right: 20px;
+    bottom: 0;
+
 }

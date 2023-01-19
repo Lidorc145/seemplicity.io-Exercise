@@ -6,7 +6,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import {TextField} from "@mui/material";
 import {GetFindingsData} from "../MockData";
 import Select from 'react-select';
-import {JiraLogo, MondayLogo, ServiceNowLogo} from "./SvgData";
+import {JiraLogo, JiraLogoSmall, MondayLogo, MondayLogoSmall, ServiceNowLogo, ServiceNowLogoSmall} from "./SvgData";
 
 const rows = GetFindingsData();
 const projectOptions = [
@@ -22,6 +22,19 @@ const issueTypeOptions = [
 
 const ticketKinds = ['Monday', 'ServiceNow', 'Jira'];
 const ticketLogos = [<MondayLogo/>, <ServiceNowLogo/>, <JiraLogo/>];
+const ticketLogosSmall = (ticketService) => {
+    switch (ticketService) {
+        case 'Jira':
+            return <JiraLogoSmall/>;
+            break;
+        case 'ServiceNow':
+            return <ServiceNowLogoSmall/>;
+            break;
+        case 'Monday':
+            return <MondayLogoSmall/>;
+            break;
+    }
+};
 
 function FindingTable() {
     const [open, setOpen] = React.useState(false);
@@ -69,65 +82,67 @@ function FindingTable() {
                     aria-describedby="modal-modal-description"
                 >
                     <Box className="findingModal">
-                        <div className='grid-container'>
-                            <div className='text-2xl font-bold text-left modalTitle'>Create a ticket</div>
-                            <div>
-                                <CloseIcon sx={{color: '#607AFF'}} onClick={handleClose}/>
-                            </div>
-                        </div>
-                        <div className='separator'/>
-                        <div className='flex mt-5 mb-10'>
-                            {ticketKinds.map((val, idx) => (
-                                <label key={idx} defaultValue='Jira' onChange={handleChange}>
-                                    <div className='flex mr-8'>
-                                        <div className='grow mr-2'>
-                                            <input type="radio" name="service" value={val}/>
-                                        </div>
-                                        <div className='flex-none'>{ticketLogos[idx]}</div>
-                                    </div>
-                                </label>)).reverse()}
-                        </div>
                         <div>
                             <div className='grid-container'>
-                                <div className='grid-half text-1xl font-bold text-left cell1'> Project</div>
-                                <div className='grid-half text-1xl font-bold text-left cell2'>Issue Type</div>
-                            </div>
-                            <div className='grid-container'>
-                                <div className='grid-half text-1xl font-bold text-left cell1'>
-                                    <Select placeholder="Select Project"
-                                            options={projectOptions}/>
-                                </div>
-                                <div className='grid-half text-1xl font-bold text-left cell2'>
-                                    <Select placeholder="Select Issue Type"
-                                            options={issueTypeOptions} onChange={e => setIssueTypeOption(e.value)}/>
+                                <div className='text-2xl font-bold text-left modalTitle'>Create a ticket</div>
+                                <div>
+                                    <CloseIcon sx={{color: '#607AFF'}} onClick={handleClose}/>
                                 </div>
                             </div>
-
-                            {issueTypeOption === 'task' &&
+                            <div className='separator'/>
+                            <div className='flex mt-5 mb-10'>
+                                {ticketKinds.map((val, idx) => (
+                                    <label onChange={handleChange}>
+                                        <div key={idx} className='flex mr-8'>
+                                            <div className='grow mr-2'>
+                                                <input type="radio" name="service" checked={val === ticketService}
+                                                       value={val}/>
+                                            </div>
+                                            <div className='flex-none'>{ticketLogos[idx]}</div>
+                                        </div>
+                                    </label>)).reverse()}
+                            </div>
+                            <div>
                                 <div className='grid-container'>
-                                    <div className='text-1xl font-bold text-left grid-full'> Project</div>
-                                    <div className='grid-full'>
-                                        <TextField fullWidth placeholder="Write a title"
-                                                   id="fullWidth"/>
+                                    <div className='grid-half text-1xl font-bold text-left cell1'> Project</div>
+                                    <div className='grid-half text-1xl font-bold text-left cell2'>Issue Type</div>
+                                </div>
+                                <div className='grid-container'>
+                                    <div className='grid-half text-1xl font-bold text-left cell1'>
+                                        <Select placeholder="Select Project"
+                                                options={projectOptions}/>
                                     </div>
-                                    <div className='text-1xl font-bold text-left grid-full'>Description</div>
-                                    <div className='grid-full'>
-                                        <TextField fullWidth multiline minRows='4' placeholder="Write a title"
-                                                   id="fullWidth"/>
+                                    <div className='grid-half text-1xl font-bold text-left cell2'>
+                                        <Select placeholder="Select Issue Type"
+                                                options={issueTypeOptions} onChange={e => setIssueTypeOption(e.value)}/>
                                     </div>
                                 </div>
 
-                            }
-                            <div className='grow h-14'/>
-                            <div className='flex'>
-                                <div className="grow h-14"/>
-                                <div className='flex-none'>
-                                    <button className='buttons outlined' onClick={handleClose}>Cancel</button>
-                                    <button className='buttons contained' disabled>Create ticket</button>
-                                </div>
+                                {issueTypeOption === 'task' &&
+                                    <div className='grid-container'>
+                                        <div className='text-1xl font-bold text-left grid-full'> Project</div>
+                                        <div className='grid-full'>
+                                            <TextField fullWidth placeholder="Write a title"
+                                                       id="fullWidth"/>
+                                        </div>
+                                        <div className='text-1xl font-bold text-left grid-full'>Description</div>
+                                        <div className='grid-full'>
+                                            <TextField fullWidth multiline minRows='3' maxRows={6}
+                                                       placeholder="Write a title"
+                                                       id="fullWidth"/>
+                                        </div>
+                                    </div>
+
+                                }
+
                             </div>
-
                         </div>
+                        <div className='h-10'/>
+                        <div className='flex flex-row-reverse buttonGroup'>
+                            <button className='buttons contained' disabled>Create ticket</button>
+                            <button className='buttons outlined' onClick={handleClose}>Cancel</button>
+                        </div>
+
                     </Box>
                 </Modal>
             </div>
@@ -136,7 +151,12 @@ function FindingTable() {
 
     function getTicket(params) {
         if (params.row.ticket) {
-            return `${params.row.ticket.name || ''}-${params.row.ticket.id || ''}`;
+            return (
+                <div className='flex'>
+                    <div>{ticketLogosSmall(params.row.ticket.name)}</div>
+                    <div className='pl-3'>{params.row.ticket.name || ''}-{params.row.ticket.id || ''}</div>
+                </div>
+            );
         }
         return (<a href="#" className='link' onClick={(e) => {
             //params.row.ticket = {id: Math.floor(Math.random() * 9999), name: 'Ticket'};
