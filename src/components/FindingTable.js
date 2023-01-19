@@ -49,8 +49,8 @@ function FindingTable() {
 
 
     const columns = [
-        {field: 'title', headerName: 'Title', flex: 1.5, padding: '59px'},
-        {field: 'description', headerName: 'Description', flex: 3},
+        {field: 'title', headerName: 'Title', flex: 1, padding: '59px'},
+        {field: 'description', headerName: 'Description', flex: 2},
         {field: 'ticket', headerName: 'Ticket', flex: 1, renderCell: getTicket}
     ];
 
@@ -64,8 +64,9 @@ function FindingTable() {
                 Findings
             </h1>
 
-            <div style={{height: '100%', width: '100%', paddingTop: '25px'}}>
+            <div style={{height: '100%', paddingTop: '25px'}}>
                 <DataGrid
+                    loading={rows.length === 0}
                     rows={rows}
                     columns={columns}
                     pageSize={20}
@@ -74,6 +75,7 @@ function FindingTable() {
                     disableSelectionOnClick
                     disableColumnMenu
                     autoHeight
+
                 />
                 <Modal
                     open={open}

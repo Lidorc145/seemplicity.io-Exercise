@@ -25,13 +25,19 @@
     color: white;
 }
 
+.body {
+
+    padding: 25px 50px 25px 50px;
+}
+
 @media (max-width: 767px) {
     .hidden-mobile {
         display: none;
     }
 
     .body {
-        padding: 0px;
+
+        padding: 5px 5px 5px 5px;
     }
 }
 
@@ -52,10 +58,6 @@
     height: 56px;
 }
 
-.body {
-
-    padding: 25px 50px 25px 50px;
-}
 
 .link {
     color: #607AFF;
@@ -71,6 +73,13 @@
 
 .MuiDataGrid-root .MuiDataGrid-cell:focus-within {
     outline: none !important;
+
+}
+
+.MuiDataGrid-cell {
+
+
+    text-overflow: ellipsis !important;
 }
 
 .nav-item {
@@ -99,7 +108,7 @@
 }
 
 svg.MuiDataGrid-iconSeparator {
-    display: none;
+ 
 }
 
 .nav-item:not(.is-active):hover:before {
@@ -247,4 +256,10 @@ div.MuiDataGrid-columnHeader, div.MuiDataGrid-cell {
     right: 20px;
     bottom: 0;
 
+}
+
+.hideScrollBar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none;
+    overflow-y: hidden; /* Hide vertical scrollbar */
 }

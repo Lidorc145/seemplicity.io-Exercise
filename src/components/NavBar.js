@@ -3,6 +3,7 @@ import AppBar from "@mui/material/AppBar";
 import {IconButton, Toolbar,} from "@mui/material";
 import {DefaultUserIcon, SeemplicityLogo, SettingsIcon} from "./SvgData";
 import {createTheme, ThemeProvider} from '@mui/material/styles';
+import {BrowserView, isMobile, MobileView} from 'react-device-detect';
 
 const darkTheme = createTheme({
     palette: {
@@ -20,23 +21,27 @@ export function NavBar() {
             item.classList.contains('is-active') && handleIndicator(item);
         });
     });
+    const nav = (<nav className="nav hideScrollBar">
+        {navItems.map((item) => (
+            <a href="#" key={item}
+               className={"nav-item" + (item === navItems[1] ? ' is-active' : '')}
+               onChange={(e) => console.log("dsdsdds")} active-color="#607AFF" onClick={e => {
+                e.preventDefault();
+                handleIndicator(e.target);
+            }}>{item}</a>
+        ))}
+        <span className="nav-indicator"></span>
+
+    </nav>);
 
     return (
         <ThemeProvider theme={darkTheme}>
             <AppBar>
                 <Toolbar className='toolbar'>
                     <SeemplicityLogo/>
-                    <nav className="nav">
-                        {navItems.map((item) => (
-                            <a href="#" key={item} className={"nav-item" + (item === navItems[1] ? ' is-active' : '')}
-                               onChange={(e) => console.log("dsdsdds")} active-color="#607AFF" onClick={e => {
-                                e.preventDefault();
-                                handleIndicator(e.target);
-                            }}>{item}</a>
-                        ))}
-                        <span className="nav-indicator"></span>
-
-                    </nav>
+                    <BrowserView>
+                        {nav}
+                    </BrowserView>
                     <div className="grow"/>
                     <IconButton style={{marginRight: '20px'}} edge="start" color="inherit">
                         <SettingsIcon/>
@@ -45,11 +50,20 @@ export function NavBar() {
                         <IconButton edge="start" color="inherit">
                             <DefaultUserIcon/>
                         </IconButton>
-                        <a href="#" className="hidden-mobile" onClick={e => e.preventDefault()}>John@seemplicity.io</a>
+                        {!isMobile && <a href="#" className="hidden-mobile"
+                                         onClick={e => e.preventDefault()}>John@seemplicity.io</a>}
                     </div>
                 </Toolbar>
+                <MobileView>
+                    <Toolbar className='flex-col'>
+                        {nav}
+                    </Toolbar>
+                </MobileView>
             </AppBar>
             <Toolbar/>
+            <MobileView>
+                <Toolbar/>
+            </MobileView>
         </ThemeProvider>
 
     );
