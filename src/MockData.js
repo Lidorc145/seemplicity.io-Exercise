@@ -9,7 +9,7 @@ export function GetFindingsData() {
             description: "This is the description of the finding"
         };
         let hasTicket = Math.floor(Math.random() * 2);
-        let ticketKind = ['Monday', 'Service-Now', 'Jira'][Math.floor(Math.random() * 3)]
+        let ticketKind = ['Monday', 'ServiceNow', 'Jira'][Math.floor(Math.random() * 3)]
 
         if (hasTicket) {
             current = {...current, ticket: {id: i, name: ticketKind}}

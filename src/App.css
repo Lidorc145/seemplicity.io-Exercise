@@ -136,8 +136,10 @@ div.MuiDataGrid-columnHeader, div.MuiDataGrid-cell {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    min-width: 400px;
-    max-width: 750px;
+    min-width: 440px;
+    max-width: 660px;
+    min-height: 411px;
+    max-height: 633px;
     background-color: #FFFFFF;
     border: 2px solid #E0E1E8;
     border-radius: 8px;
@@ -154,10 +156,90 @@ div.MuiDataGrid-columnHeader, div.MuiDataGrid-cell {
     line-height: 29px;
     align-items: flex-end;
     color: #26026C;
+    grid-column: span 23;
+
 }
 
 .separator {
     background-color: #E0E1E8;
     height: 2px;
     margin: 10px 0px 10px 0px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    margin: 5px 0px 15px 0px;
+}
+
+.grid-half {
+    grid-column: span 12;
+}
+
+.grid-3 {
+    grid-column: span 12;
+}
+
+.grid-full {
+    grid-column: span 24;
+    font-family: 'Heebo';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    text-transform: capitalize;
+    color: #41425A;
+    margin: 20px 0px 0px 0px;
+}
+
+.radioGroup {
+    padding: 10px 0px 40px 0px;
+}
+
+.cell1 {
+    font-family: 'Heebo';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    text-transform: capitalize;
+    color: #41425A;
+    margin-right: 10px;
+}
+
+.cell2 {
+    font-family: 'Heebo';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    text-transform: capitalize;
+    color: #41425A;
+    margin-left: 10px;
+}
+
+.buttons {
+    border-radius: 56px;
+    width: 94px;
+    height: 28px;
+    font-family: 'Heebo';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    margin: 25px 0px 15px 20px;
+}
+
+.contained {
+    background: #607AFF;
+    color: #FFFFFF;
+}
+
+.outlined {
+    color: #41425A;
+    border: 1px solid rgba(65, 66, 90, 1);
+}
+
+.buttons:disabled {
+    opacity: 0.5;
 }
