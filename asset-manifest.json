@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.fa4ecf54.css",
-    "main.js": "/static/js/main.dd4d165d.js",
-    "static/js/787.8ab3edf2.chunk.js": "/static/js/787.8ab3edf2.chunk.js",
-    "static/media/axios.cjs": "/static/media/axios.41b3b7c637793f9462e0.cjs",
-    "index.html": "/index.html",
-    "main.fa4ecf54.css.map": "/static/css/main.fa4ecf54.css.map",
-    "main.dd4d165d.js.map": "/static/js/main.dd4d165d.js.map",
-    "787.8ab3edf2.chunk.js.map": "/static/js/787.8ab3edf2.chunk.js.map"
+    "main.css": "/seemplicity.io-Exercise/static/css/main.fa4ecf54.css",
+    "main.js": "/seemplicity.io-Exercise/static/js/main.c744e168.js",
+    "static/js/787.8ab3edf2.chunk.js": "/seemplicity.io-Exercise/static/js/787.8ab3edf2.chunk.js",
+    "static/media/axios.cjs": "/seemplicity.io-Exercise/static/media/axios.41b3b7c637793f9462e0.cjs",
+    "index.html": "/seemplicity.io-Exercise/index.html",
+    "main.fa4ecf54.css.map": "/seemplicity.io-Exercise/static/css/main.fa4ecf54.css.map",
+    "main.c744e168.js.map": "/seemplicity.io-Exercise/static/js/main.c744e168.js.map",
+    "787.8ab3edf2.chunk.js.map": "/seemplicity.io-Exercise/static/js/787.8ab3edf2.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.fa4ecf54.css",
-    "static/js/main.dd4d165d.js"
+    "static/js/main.c744e168.js"
   ]
 }
