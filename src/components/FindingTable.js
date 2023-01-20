@@ -1,10 +1,9 @@
 import * as React from 'react';
+import {useEffect} from 'react';
 import {DataGrid} from '@mui/x-data-grid';
-import {GetFindingsData} from "../MockData";
 import {JiraLogoSmall, MondayLogoSmall, ServiceNowLogoSmall} from "./SvgData";
 import FindingModal from "./FindingModal";
 
-const rows = GetFindingsData();
 
 const ticketLogosSmall = (ticketService) => {
     switch (ticketService) {
@@ -22,10 +21,20 @@ const ticketLogosSmall = (ticketService) => {
 
 function FindingTable() {
     const [open, setOpen] = React.useState(false);
-    let [row, setRow] = React.useState(null);
+    const [rows, setRows] = React.useState([]);
+    const [selectedRow, setSelectedRow] = React.useState(null);
+
+    useEffect(() => {
+        if (rows.length === 0) {
+            global.axios.get("/findings").then(function (response) {
+                setRows(response.data);
+            });
+        }
+    }, []);
+
     const handleOpen = (val) => {
         setOpen(true);
-        setRow(val);
+        setSelectedRow(val);
     };
 
 
@@ -54,7 +63,7 @@ function FindingTable() {
                     disableColumnMenu
                     autoHeight
                 />
-                <FindingModal open={open} setOpen={setOpen} row={row}/>
+                <FindingModal open={open} setOpen={setOpen} row={selectedRow}/>
             </div>
         </div>
     );
@@ -70,8 +79,7 @@ function FindingTable() {
             );
         }
         return (<a href="#" className='link' onClick={(e) => {
-            //params.row.ticket = {id: Math.floor(Math.random() * 9999), name: 'Ticket'};
-            //console.log(params);
+            e.preventDefault();
             handleOpen(params.row);
         }}>Create Ticket</a>);
     }

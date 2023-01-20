@@ -25,7 +25,7 @@ export function NavBar() {
         {navItems.map((item) => (
             <a href="#" key={item}
                className={"nav-item" + (item === navItems[1] ? ' is-active' : '')}
-               onChange={(e) => console.log("dsdsdds")} active-color="#607AFF" onClick={e => {
+               active-color="#607AFF" onClick={e => {
                 e.preventDefault();
                 handleIndicator(e.target);
             }}>{item}</a>

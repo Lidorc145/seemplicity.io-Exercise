@@ -8,7 +8,6 @@ function App() {
             <NavBar/>
             <div className="body">
                 <FindingTable/>
-
             </div>
         </div>
     );

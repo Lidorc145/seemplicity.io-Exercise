@@ -1,4 +1,14 @@
 import React from 'react';
+import axios from 'axios';
+import MockAdapter from 'axios-mock-adapter';
+
+const a = axios.create()
+const mockAdapter = new MockAdapter(a, {delayResponse: 700});
+global.axios = a;
+
+mockAdapter.onGet(new RegExp(`/findings/*`)).reply(200, GetFindingsData());
+mockAdapter.onPost(new RegExp(`/ticket/open/*`)).reply(200, () => mockAdapter?.history?.post.pop());
+
 
 export function GetFindingsData() {
     const data = [];

@@ -21,11 +21,11 @@ export default function FindingModal(props) {
     const {open, setOpen, row} = props;
     const [snackBarOpen, setSnackBarOpen] = useState(false);
     const schema = yup.object().shape({
-        service: yup.string().required(),
-        project: yup.object().required(),
-        issueType: yup.object().required(),
-        title: yup.string().required("Must enter title"),
-        description: yup.string().required("Must enter description")
+        service: yup.string().required("Service is required"),
+        project: yup.object().nullable("sadas").required("Project is required"),
+        issueType: yup.object().required("Issue type is required"),
+        title: yup.string().min(2).required("Title is required"),
+        description: yup.string().min(2).required("Description is required")
     });
 
     const {register, control, handleSubmit, watch, reset, formState: {errors}} = useForm({
@@ -34,20 +34,28 @@ export default function FindingModal(props) {
 
     const onSubmit = data => {
         if (!shouldDisabled()) {
-            row['ticket'] = {
-                id: Math.floor(Math.random() * 9999),
-                name: watch("service"),
-                title: watch('title'),
+            global.axios.post("/ticket/open", {
+                id: row?.id, title: watch('title'),
                 description: watch('description'),
-                issueType: watch('issueType')
-            };
-            handleClose();
-            setSnackBarOpen(true);
+                ticket: {
+                    id: Math.floor(Math.random() * 9999),
+                    name: watch("service"),
+                    project: watch('project').value,
+                    issueType: watch('issueType').value
+                }
+            }).then(function (response) {
+                const newData = JSON.parse(response.data().data);
+                row['title'] = newData.title;
+                row['description'] = newData.description;
+                row['ticket'] = newData.ticket;
+                handleClose();
+                setSnackBarOpen(true);
+            });
         }
     };
     useEffect(() => {
-        reset({service: 'Jira'});
-    }, []);
+        reset({service: 'Jira', title: row?.title, description: row?.description});
+    }, [row]);
 
     const handleClose = () => {
         setOpen(false);
@@ -90,7 +98,7 @@ export default function FindingModal(props) {
                                                 register('service').onChange(e);
                                                 reset({
                                                     service: watch('service'),
-                                                    project: '',
+                                                    project: null,
                                                     issueType: watch('issueType')
                                                 });
                                             }}
@@ -145,7 +153,7 @@ export default function FindingModal(props) {
                                 <div className='grid-container'>
                                     <div className='text-1xl font-bold text-left grid-full'>Title</div>
                                     <div className='grid-full'>
-                                        <TextField fullWidth placeholder="Write a title"
+                                        <TextField fullWidth placeholder="Write a title" defaultValue={row?.title}
                                                    {...register('title')}
                                                    id="fullWidth"/>
                                         {errors.title && <p className='alert'>{errors.title.message}</p>}
@@ -153,6 +161,7 @@ export default function FindingModal(props) {
                                     <div className='text-1xl font-bold text-left grid-full'>Description</div>
                                     <div className='grid-full'>
                                         <TextField fullWidth multiline minRows='3' maxRows={6}
+                                                   defaultValue={row?.description}
                                                    placeholder="Write a title"
                                                    {...register('description')}
                                                    id="fullWidth"/>
