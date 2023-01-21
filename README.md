@@ -5,9 +5,9 @@
 #### [Figma](https://www.figma.com/file/VYFO8Qr8FqLBmkguE2SHrN)
 # [Demo](https://lidorc145.github.io/seemplicity.io-Exercise)
 ## Results:
-#### Mobile:
+#### Mobile version:
 https://user-images.githubusercontent.com/12116215/213829431-68a026be-2737-43e9-9cb6-bd1b994008c8.mp4
-#### Web:
+#### Web version:
 ![demo](https://user-images.githubusercontent.com/12116215/213365136-c2a82ab2-8d74-48c2-ba52-0d02167bb926.jpg)
 
  
